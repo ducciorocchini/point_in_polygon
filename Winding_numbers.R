@@ -46,7 +46,7 @@ ggplot() +
   # Informative text
   annotate("text", x = 1.2, y = -0.3,
            label = "Winding number = sum(theta[i])", size = 4) +
-  annotate("text", x = 3.5, y = 2.6,
+  annotate("text", x = 2.5, y = 2.6,
            label = "If winding number ≠ 0,\nthen P is inside.\nIf = 0, then outside.",
            hjust = 0, size = 4) +
 
