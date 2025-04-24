@@ -1,10 +1,8 @@
-Sure! Let's modify your R code to **visualize** the point and the polygon using `ggplot2`. We’ll do the following:
+
 
 1. Plot the polygon.
 2. Plot the point.
 3. Highlight whether the point is inside or outside.
-
-Here’s the updated R code with plotting:
 
 ```r
 library(ggplot2)
@@ -64,4 +62,3 @@ ggplot() +
 - The point will be **green** if inside, **red** if outside.
 - The title and subtitle show the result visually and textually.
 
-Let me know if you want to test with multiple points or animate it!
