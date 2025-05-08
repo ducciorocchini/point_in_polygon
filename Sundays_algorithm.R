@@ -65,6 +65,7 @@ results <- lapply(1:nrow(points), function(i) {
 crossings_all <- bind_rows(results)
 
 # Plot
+pdf("~/Desktop/sundays.pdf")
 ggplot() +
   geom_polygon(data = polygon, aes(x = x, y = y), fill = "lightblue", color = "black", alpha = 0.4) +
   geom_segment(data = edges, aes(x = x0, y = y0, xend = x1, yend = y1), color = "black") +
@@ -84,3 +85,4 @@ ggplot() +
   coord_fixed() +
   theme_minimal() +
   ggtitle("Sunday's Point-in-Polygon Algorithm: Inside vs Outside")
+dev.off()
