@@ -86,6 +86,37 @@ ggplot() +
   labs(title = "Point-in-Polygon Test with Complex Polygon (Sunday's algorithm)",
        color = "Inside?")
 dev.off()
+
+# Visualization with arrows
+
+# Calculate the midpoints of each edge
+midpoints <- data.frame(
+  x = (polygon$x + c(polygon$x[-1], polygon$x[1])) / 2,
+  y = (polygon$y + c(polygon$y[-1], polygon$y[1])) / 2
+)
+
+pdf("~/Desktop/sundays.pdf")
+ggplot() +
+  geom_polygon(data = polygon, aes(x = x, y = y),
+               fill = "lightblue", color = "black", alpha = 0.6) +
+  geom_point(data = points, aes(x = x, y = y, color = inside), size = 4) +
+  geom_segment(data = rays_df, aes(x = x, y = y, xend = xend, yend = yend),
+                 linetype = "dashed", arrow = arrow(length = unit(0.2, "cm"))) +
+  geom_segment(data = midpoints,
+               aes(x = x, y = y,
+                   xend = c(tail(polygon$x, -1), polygon$x[1]),
+                   yend = c(tail(polygon$y, -1), polygon$y[1])),
+               arrow = arrow(type = "closed", length = unit(0.2, "inches")),
+               linewidth = 1, color = "red") +  # Arrows colored red
+  geom_text(aes(x = 1.3, y = 4.7, label = "(+1)"), inherit.aes = FALSE) +
+  geom_text(aes(x = 4.6, y = 4.7, label = "(-1)"), inherit.aes = FALSE) +
+  geom_text(aes(x = 5.3, y = 4.7, label = "(+1)"), inherit.aes = FALSE) +
+  scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "green")) +
+  coord_equal() +
+  labs(title = "Point-in-Polygon Test with Complex Polygon (Sunday's algorithm)",
+       color = "Inside?")
+dev.off()
+
 ````
 
 ## 🖼️ Output
